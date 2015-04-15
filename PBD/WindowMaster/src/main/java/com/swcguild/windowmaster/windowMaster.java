@@ -47,6 +47,7 @@ public class windowMaster {
         System.out.println("the trim cost is $" + trimCost);        
         System.out.println("total: $" + total );
         
+        
     }
 }
     
