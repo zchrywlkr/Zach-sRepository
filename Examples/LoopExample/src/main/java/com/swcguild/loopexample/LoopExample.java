@@ -28,6 +28,10 @@ public class LoopExample {
             System.out.println(--userNumber);
             
         }
+        
+        for(int i= userNumber; i <= 10; i++){
+            System.out.println(i);
+        }
     }
     
 }
