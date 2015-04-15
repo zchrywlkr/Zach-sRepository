@@ -26,6 +26,13 @@ public class MoreUserInputData {
         String login = sc.nextLine();
         System.out.print("GPA:");
         String gpa = sc.nextLine();
+        double gpaDouble = Double.parseDouble(gpa);
+        
+        while(gpaDouble > 4 || gpaDouble < 0){
+            System.out.println("please enter number between 0 and 4");
+            gpa = sc.nextLine();
+            gpaDouble = Double.parseDouble(gpa);
+        }
         
         System.out.println("\rYour info");
         System.out.println("\tLogin: "+ login);
