@@ -46,5 +46,6 @@ public class Questions {
                 guess = "paper clip";
             }
         }
+        System.out.println("my guess is "+ guess);
     }
 }
