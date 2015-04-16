@@ -49,6 +49,16 @@ public class Magic {
 			response = "Cannot predict now";
 		else if ( choice == 15 )
 			response = "Concentrate and ask again";
+                else if ( choice == 16)
+                        response = "Dont count on it";
+                else if ( choice == 17)
+                        response = "My replay is no";
+                else if ( choice == 18)
+                        response = "my sources say no";
+                else if ( choice == 19)
+                        response = "outlook not so good";
+                else if ( choice == 20)
+                        response = "very doubtful";
 		else 
 			response = "8-BALL ERROR!";
 
