@@ -28,7 +28,7 @@ public class TicTacToe {
         board[8] = "9";
         String move = "";
         int winner = 0; // the value of 1 will mean x wins 2 o wins
-        int moves = 0;
+        int moves = 0; //records wich move game is on
         int numberPlayers = 0;
 
         System.out.println("\"1\" or \"2\" players");
@@ -38,6 +38,7 @@ public class TicTacToe {
             if(numberPlayers == 1){
                 board = move(board,board[ai(board,moves)],"o");
                 drawBoard(board);
+                moves++;
                 winner = winner(board, "o");
             }
             
@@ -108,7 +109,7 @@ public class TicTacToe {
             }
         }
         
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             if (board[i].equals(board[i + 3]) && board[i].equals(board[i + 6])) {//checks for vertical wins
                 if (player.equals("x")) {
                     return 1;
@@ -140,7 +141,7 @@ public class TicTacToe {
         Random r = new Random();
         int move = 0;
         if(moves == 0){//determines if its the first move the computer will make
-            move = 1+r.nextInt(1); //the computer will randomly choose 1 of 2 first moves
+            move = 1+r.nextInt(2); //the computer will randomly choose 1 of 2 first moves
             if(move ==1 ){
                 return 0;
             }else if(move == 2){
