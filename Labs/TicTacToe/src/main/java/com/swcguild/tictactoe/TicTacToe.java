@@ -27,7 +27,7 @@ public class TicTacToe {
         board[7] = "8";
         board[8] = "9";
         String move = "";
-        int winner = 0; // the value of 1 will mean x wins 2 o wins
+        int winner = 0; // at value 1 x wins 2 o wins 0 tie
         int moves = 0; //records wich move game is on
         int numberPlayers = 0;
 
@@ -36,8 +36,9 @@ public class TicTacToe {
         sc.nextLine(); //clears the enter key from sc.nextInt();
         do {
             if(numberPlayers == 1){
-                board = move(board,board[ai(board,moves)],"o");
+                board = move(board,board[ai(board,moves)],"o");//gets ai's move
                 drawBoard(board);
+                        
                 moves++;
                 winner = winner(board, "o");
             }
@@ -72,14 +73,14 @@ public class TicTacToe {
         if (winner == 1) {
             System.out.println("Xs win!");
         } else if (winner == 2) {
-            System.out.println("Os win go baltimore!");
+            System.out.println("Os win! go Baltimore!");
         } else {
             System.out.println("Its a tie");
         }
     }
 
     public static void drawBoard(String[] board) {
-
+        System.out.println("\r\r\r\r\r");
         System.out.println("  " + board[0] + "  |  " + board[1] + "  |  " + board[2] + "  ");
         System.out.println("_____|_____|_____");
         System.out.println("  " + board[3] + "  |  " + board[4] + "  |  " + board[5] + "  ");
@@ -88,7 +89,7 @@ public class TicTacToe {
         System.out.println("     |     |     ");
     }
 
-    public static String[] move(String[] board, String move, String player) {
+    public static String[] move(String[] board, String move, String player) {//changes number on the board to a x or o
         for (int i = 0; i < board.length; i++) {
             if (board[i].equals(move)) {
                 board[i] = player;
@@ -150,7 +151,42 @@ public class TicTacToe {
             }
         }
         
-        for(int i = 0; i<3; i++){//checks for vertical block moves and wins
+        for(int i = 0; i<3; i++){//checks for vertical win moves
+            if(board[i].equals(board[i+3])&&(board[i].equals("o"))&&(!board[i+6].equals("x") && !board[i+6].equals("o"))){
+                return i+6;
+            }else if(board[i].equals(board[i+6])&&(board[i].equals("o"))&&(!board[i+3].equals("x") && !board[i+3].equals("o"))){
+                return i+3;
+            }else if(board[i+3].equals(board[i+6])&&(board[i+3].equals("o"))&&(!board[i].equals("x") && !board[i].equals("o"))){
+                return i;
+            }
+        }
+        
+        for(int i = 0; i<7; i+= 3){//checks for horizontal  win moves
+            if(board[i].equals(board[i+1])&&(board[i].equals("o"))&&(!board[i+2].equals("x") && !board[i+2].equals("o"))){
+                return i+2;
+            }else if(board[i].equals(board[i+2])&&(board[i].equals("o"))&&(!board[i+1].equals("x") && !board[i+1].equals("o"))){
+                return i+1;
+            }else if(board[i+1].equals(board[i+2])&&(board[i+1].equals("o"))&&(!board[i].equals("x") && !board[i].equals("o"))){
+                return i;
+            }
+        }
+        
+        if(board[0].equals(board[4])&&(board[0].equals("o"))&&(!board[8].equals("x") && !board[8].equals("o"))){ //checks for diagonal win moves 
+            return 8;
+        }else if(board[0].equals(board[8])&&(board[0].equals("o"))&&(!board[4].equals("x") && !board[4].equals("o"))){
+            return 4;
+        }else if(board[4].equals(board[8])&&(board[4].equals("o"))&&(!board[0].equals("x") && !board[0].equals("o"))){
+            return 0;
+        }
+        if(board[2].equals(board[4])&&(board[2].equals("o"))&&(!board[6].equals("x") && !board[6].equals("o"))){ //checks for diagonal win moves
+            return 6;
+        }else if(board[2].equals(board[6])&&(board[2].equals("o"))&&(!board[4].equals("x") && !board[4].equals("o"))){
+            return 4;
+        }else if(board[4].equals(board[6])&&(board[4].equals("o"))&&(!board[2].equals("x") && !board[2].equals("o"))){
+            return 2;
+        }
+        
+         for(int i = 0; i<3; i++){//checks for vertical block moves and wins
             if(board[i].equals(board[i+3])&&(!board[i+6].equals("x") && !board[i+6].equals("o"))){
                 return i+6;
             }else if(board[i].equals(board[i+6])&&(!board[i+3].equals("x") && !board[i+3].equals("o"))){
@@ -160,7 +196,7 @@ public class TicTacToe {
             }
         }
         
-        for(int i = 0; i<6; i+= 3){//checks for horizontal block moves and wins
+        for(int i = 0; i<7; i+= 3){//checks for horizontal block moves and wins
             if(board[i].equals(board[i+1])&&(!board[i+2].equals("x") && !board[i+2].equals("o"))){
                 return i+2;
             }else if(board[i].equals(board[i+2])&&(!board[i+1].equals("x") && !board[i+1].equals("o"))){
