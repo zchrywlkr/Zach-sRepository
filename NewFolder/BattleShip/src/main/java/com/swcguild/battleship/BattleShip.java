@@ -21,6 +21,7 @@ public class BattleShip {
         int coordinate[] = new int[2];
         int player1Score= 0;
         int player2Score = 0;
+        String hit = "";
 
         board1 = initialize();//sets all boards to black values
         board2 = initialize();
@@ -31,7 +32,7 @@ public class BattleShip {
         sc.nextLine();
         drawBoard(board1);
         board1=setBoard(board1);
-        
+
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         System.out.println("player2's turn hit enter");
         sc.nextLine();
@@ -46,35 +47,46 @@ public class BattleShip {
             System.out.println("Player1 turn");
             System.out.println("Enter target coordinates: ");
             coordinate= validateMove(targetBoard1);
-        if(board1[coordinate[0]][coordinate[1]].equals("x")){
-            System.out.println("Hit");
+        if(board2[coordinate[0]][coordinate[1]].equals("x")){
+            hit="Hit";
             player1Score++;
             targetBoard1[coordinate[0]][coordinate[1]]="x";
+            
+            
         }else{
-            System.out.println("Miss");
+            hit ="Miss";
             targetBoard1[coordinate[0]][coordinate[1]]="o";
         } 
+            drawBoard(targetBoard1);
+            System.out.println(hit);
+            System.out.println("hit enter");
+            sc.nextLine();
+            
             System.out.println("Player2 turn");
+            drawBoard(targetBoard2);
             System.out.println("Enter target coordinates: ");
             coordinate= validateMove(targetBoard2);
         
-        if(board2[coordinate[0]][coordinate[1]].equals("x")){
+        if(board1[coordinate[0]][coordinate[1]].equals("x")){
             System.out.println("Hit");
             player2Score++;
             targetBoard2[coordinate[0]][coordinate[1]]="x";
         }else{
             System.out.println("Miss");
-            targetBoard1[coordinate[0]][coordinate[1]]="o";
+            targetBoard2[coordinate[0]][coordinate[1]]="o";
             
         }
-        
-        
+            drawBoard(targetBoard2);
+            System.out.println(hit);
+            System.out.println("hit enter");
+            sc.nextLine();
+
         } while (player1Score<14 && player2Score<14);
       
             if(player1Score > player2Score){
                 System.out.println("Player 1 wins");
         }else{
-                System.out.println("Plaayer2 wins");
+                System.out.println("Player2 wins");
             }
 
     }
@@ -91,7 +103,7 @@ public class BattleShip {
     
     public static String[][]setBoard(String[][]board){
         Scanner sc = new Scanner(System.in);
-        int ship = 4;
+        int ship = 4; 
         int x = 0;
         int y = 0;
         int move[] = new int[2];
@@ -155,7 +167,6 @@ public class BattleShip {
         do {
             board = resetArray(resetBoard);
             drawBoard(board);
-            System.out.println("check");
             
             int move2[] = validateMove(board);
             if(move[1] == move2[1]){  
