@@ -15,8 +15,10 @@ public class Board {
     private String[] onTheBoard;
     String vowels[] = {"a","e","i","o","u"};
     String wrongLetters = "";
+    String category ="";
 
-    public Board(String phrase) {
+    public Board(String phrase,String category) {
+         this.category = category;
         String onTheBoard[] = new String[phrase.length()];
         
         for (int i = 0; i < phrase.length(); i++) {
@@ -30,9 +32,11 @@ public class Board {
     }
     public void printPhrase() {
         System.out.println();
+        System.out.println("Category is \""+ category+"\"");
         for (String letter : onTheBoard) {
             System.out.print(letter + " ");
         }
+        System.out.print("\rWrong letters:" + wrongLetters);
         System.out.println();
     }
     
@@ -41,14 +45,16 @@ public class Board {
         int correct = 0;
         String guess = "";
         Scanner sc = new Scanner(System.in);
-        do{
+        
             System.out.println("enter letter");
             guess = sc.nextLine();
             
-        } while (guess.equals("a")||guess.equals("e")||guess.equals("i")||guess.equals("o")||guess.equals("u"));
+         if (guess.equalsIgnoreCase("a")||guess.equalsIgnoreCase("e")||guess.equalsIgnoreCase("i")||guess.equalsIgnoreCase("o")||guess.equalsIgnoreCase("u")){
+             return -1;
+         }
 
         for(int i = 0; i < phrase.length(); i ++){
-            if(Character.toString(phrase.charAt(i)).equals(guess)){
+            if(Character.toString(phrase.charAt(i)).equalsIgnoreCase(guess)){
                onTheBoard[i] = guess;
                correct++;
             }
@@ -71,10 +77,10 @@ public class Board {
             System.out.println("enter vowel");
             guess = sc.nextLine();
             
-        } while (!guess.equals("a")&&!guess.equals("e")&&!guess.equals("i")&&!guess.equals("o")&&guess.equals("u"));
+        } while (!guess.equalsIgnoreCase("a")&&!guess.equalsIgnoreCase("e")&&!guess.equalsIgnoreCase("i")&&!guess.equalsIgnoreCase("o")&&guess.equalsIgnoreCase("u"));
 
         for(int i = 0; i < phrase.length(); i ++){
-            if(Character.toString(phrase.charAt(i)).equals(guess)){
+            if(Character.toString(phrase.charAt(i)).equalsIgnoreCase(guess)){
                onTheBoard[i] = guess;
                correct++;
             }

@@ -1,7 +1,11 @@
 
 package com.swcguild.wheeloffortunewithclasses;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Wheel {
     int spin = 0;
@@ -50,12 +54,12 @@ public class Wheel {
             freePlay = true;
         }
         if(winnings != 0){
-            System.out.println("\r you hit" + winnings);
+            System.out.println("\r you hit :" + winnings);
             wonMoney = true;
         }else{
             if(bankrupt){System.out.println("bankrupt");}
             if(loseTurn){System.out.println("loseturn");}
-            if(freePlay){System.out.println("Freeplay");}
+            if(freePlay){winnings = 500; System.out.println("Freeplay you can guess consonate for $500 per occurance \n call a free voewl\n or try to solve the puzzle with no penalty");}
             wonMoney = false;
         }
         
@@ -74,5 +78,6 @@ public class Wheel {
         return freePlay;
     }
     
+
     
 }

@@ -1,0 +1,60 @@
+Jerry Maguire:: Movie Titles
+Kung Fu Panda::Movie Titles
+Alien Vs Predator::Movie Titles
+American Splendor::Movie Titles
+Angels and Demons::Movie Titles
+Chariots Of Fire::Movie Titles
+Clear And Present Danger::Movie Titles
+Divine Secrets Of The YaYa Sisterhood::Movie Titles
+Ferris Buellers Day Off::Movie Titles
+Grumpy Old Men::Movie Titles
+Happy Feet::Movie Titles
+Ice Age::Movie Titles
+Independence Day::Movie Titles
+Iron Man::Movie Titles
+Moulin Rouge::Movie Titles
+My Best Friends Wedding::Movie Titles
+National Lampoons European Vacation::Movie Titles
+Saturday Night Fever::Movie Titles
+Sweet Home Alabama::Movie Titles
+The Matrix::Movie Titles
+The Producers::Movie Titles
+The Curious Case Of Benjamin Button::Movie Titles
+The Green Mile::Movie Titles
+The Hunt For Red October::Movie Titles
+The Little Mermaid::Movie Titles
+Oliver Twist By Charles Dickens::Title & Author
+Green Eggs And Ham By Dr Seuss::Title & Author
+Jurassic Park By Michael Crichton::Title & Author
+LA Confidential By James Ellroy::Title & Author
+Les Miserable By Victor Hugo::Title & Author
+Moby Dick By Herman Melville::Title & Author
+The Catcher In The Rye By JD Salinger::Title & Author	
+The DaVinci Code By Dan Brown::Title & Author	
+The Odyssey By Homer::Title & Author
+Safe Haven By Nicholas Sparks::Title & Author
+How The Grinch Stole Christmas By Dr Seuss::Title & Author
+A Partridge In A Pear Tree::Song titles	
+Baby We Were Born To Run::Song titles		
+Bad To The Bone::Song titles	
+Deep In The Heart Of Texas::Song titles	
+DingDong The Witch Is Dead::Song titles	
+Dont You Step On My Blue Suade Shoes::Song titles	
+Goodness Gracious Great Balls Of Fire::Song titles		
+Have A Holly Jolly Christmas::Song titles		
+How I Wonder What You Are::Song titles		
+I Did It My Way::Song titles		
+I Get By With A Little Help From My Friends::Song titles	
+I Write The Songs That Make The Whole World Sing::Song titles	
+I'd Like To Teach The World To Sing::Song titles	
+I'm Dreaming Of A White Christmas::Song titles	
+I'm Singing In The Rain::Song titles	
+If I Were A Rich Man::Song titles	
+In The Lane Snow Is Glistening::Song titles	
+Its A Small World After All::Song titles	
+Like A Diamond In The Sky::Song titles	
+Love Me Tender Love Me True::Song titles	
+Off We Go Into The Wild Blue Yonder::Song titles	
+Old MacDonald Had A Farm::Song titles	
+Once Twice Three Times A Lady::Song titles	
+Rollin On The River::Song titles	

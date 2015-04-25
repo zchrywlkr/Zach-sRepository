@@ -5,15 +5,17 @@
  */
 package com.swcguild.wheeloffortunewithclasses;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author apprentice
  */
 public class App {
-    public static void main(String[] args) throws InterruptedException {
-         WheelOfFortune game = new WheelOfFortune();
-         game.play();
-          
+    public static void main(String[] args) throws InterruptedException, FileNotFoundException {
+         WheelOfFortune wOF = new WheelOfFortune();
+         wOF.play();
+         
     }
     
 }
