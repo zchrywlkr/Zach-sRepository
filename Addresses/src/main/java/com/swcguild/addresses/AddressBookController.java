@@ -20,11 +20,9 @@ public class AddressBookController {
     public void run(){
         int userInput= 0;
         boolean keepgoing = true;
-        
         do {
             printMenu();
             userInput = io.scanInt("");
-            
             switch(userInput){
                 case 1: addAddress();break;
                 case 2: deleteAddress(); break;
@@ -33,14 +31,8 @@ public class AddressBookController {
                 case 5: showAddresses();break;
                 case 6: keepgoing = false; break;
                 default: io.printString("unknown input");
-                    
             }
-            
-            
         } while (keepgoing);
-        
-        
-        
     }    
 
     private void printMenu() {
@@ -52,13 +44,10 @@ public class AddressBookController {
         io.printString("\t\t4. List Address count");
         io.printString("\t\t5. List all addresses");
         io.printString("\t\t6. exit");
-        
     }
-
     private void addAddress() {
         boolean addressExists = false;
         String addMoreAddress = "";
-        
         do  {
             io.printString("Add Address menu");
             String firstName = io.scanString("please  enter first name");
@@ -87,48 +76,47 @@ public class AddressBookController {
             addMoreAddress = io.scanString("Press 'y' to enter another address or 1 to go to Main Menu");
             
         } while (addMoreAddress.equalsIgnoreCase("y"));
-        
-                
-        
     }
-
     private void deleteAddress() {
         String deleteMoreAddress = "";
         do {
             io.printString("Delete Address Menu:");
             String lastName = io.scanString("\tPlease Enter Last Name of Address to Delete");
             ArrayList<Address> addressFound = addressBook.findAddress(lastName);
-
             for (Address eachAddress : addressFound) {
                 io.printString(eachAddress.getFirstName() + " " + eachAddress.getLastName());
                 io.printString(eachAddress.getStreet());
                 io.printString(eachAddress.getCity() + ", " + eachAddress.getStat() + ", " + eachAddress.getZipcode());
             }
-
             String deleteAddress = io.scanString("Really Delete? (y/n) ");
-
             if (deleteAddress.equalsIgnoreCase("y")) {
                 addressBook.removeAddress(addressBook.findAddress(lastName));
                 io.printString("Address Deleted");
             } else {
                 io.printString("Address not deleted.");
             }
-
             deleteMoreAddress = io.scanString("Press 'y' to delete another address or 1 to go to Main Menu");
         } while (deleteMoreAddress.equalsIgnoreCase("y"));
-        
     }
-
     private void findAddress() {
+        io.printString("find Address Menu:");
+            String lastName = io.scanString("\tPlease Enter Last Name of Address to find");
+            ArrayList<Address> addressFound = addressBook.findAddress(lastName);
+            for (Address eachAddress : addressFound) {
+                io.printString(eachAddress.getFirstName() + " " + eachAddress.getLastName());
+                io.printString(eachAddress.getStreet());
+                io.printString(eachAddress.getCity() + ", " + eachAddress.getStat() + ", " + eachAddress.getZipcode());
+            }
     }
-
     private void countAddress() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        io.printString("List Addres Count Menu: \r\t There are " +addressBook.countAddresses() + " addresses in the book. Press 1 to go to Main Menu" );
+        io.scanString("");
     }
-
     private void showAddresses() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            for(Address address:addressBook.getAddresses()){
+                 io.printString(address.getFirstName() + " " + address.getLastName());
+                io.printString(address.getStreet());
+                io.printString(address.getCity() + ", " + address.getStat() + ", " + address.getZipcode());
+            }
     }
-    
-    
 }

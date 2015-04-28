@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class AddressBook {
     ArrayList<Address> addresses = new ArrayList<>();
+    public final String DELIMITER = "::";
     
     public boolean addAddress(Address address){
         return addresses.add(address);
@@ -40,9 +41,15 @@ public class AddressBook {
     
     public void save(){
         
+        
     }
     public void read(){
         
     }
+
+    public ArrayList<Address> getAddresses() {
+        return addresses;
+    }
+    
 }
 
