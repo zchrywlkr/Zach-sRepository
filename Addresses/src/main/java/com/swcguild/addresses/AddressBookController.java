@@ -29,7 +29,8 @@ public class AddressBookController {
                 case 3: findAddress(); break;
                 case 4: countAddress(); break;
                 case 5: showAddresses();break;
-                case 6: keepgoing = false; break;
+                case 6: editAddress(); break; 
+                case 7: keepgoing = false; break;
                 default: io.printString("unknown input");
             }
         } while (keepgoing);
@@ -43,7 +44,8 @@ public class AddressBookController {
         io.printString("\t\t3. Find address");
         io.printString("\t\t4. List Address count");
         io.printString("\t\t5. List all addresses");
-        io.printString("\t\t6. exit");
+        io.printString("\t\t6. Edit address");
+        io.printString("\t\t7 exit");
     }
     private void addAddress() {
         boolean addressExists = false;
@@ -79,18 +81,24 @@ public class AddressBookController {
     }
     private void deleteAddress() {
         String deleteMoreAddress = "";
+        int count = 0;
+        
         do {
             io.printString("Delete Address Menu:");
             String lastName = io.scanString("\tPlease Enter Last Name of Address to Delete");
             ArrayList<Address> addressFound = addressBook.findAddress(lastName);
             for (Address eachAddress : addressFound) {
+                String stringcount = Integer.toString(count);
+                io.printString("enter to delete: " +stringcount);
                 io.printString(eachAddress.getFirstName() + " " + eachAddress.getLastName());
                 io.printString(eachAddress.getStreet());
                 io.printString(eachAddress.getCity() + ", " + eachAddress.getStat() + ", " + eachAddress.getZipcode());
+                count ++;
             }
-            String deleteAddress = io.scanString("Really Delete? (y/n) ");
-            if (deleteAddress.equalsIgnoreCase("y")) {
-                addressBook.removeAddress(addressBook.findAddress(lastName));
+            
+            int deleteAddress = io.scanInt("Chose which address delete ");
+            if (deleteAddress != 0) {
+                addressBook.removeAddress(addressFound.get(deleteAddress));
                 io.printString("Address Deleted");
             } else {
                 io.printString("Address not deleted.");
@@ -118,5 +126,57 @@ public class AddressBookController {
                 io.printString(address.getStreet());
                 io.printString(address.getCity() + ", " + address.getStat() + ", " + address.getZipcode());
             }
+    }
+
+    private void editAddress() {
+         io.printString("find Address Menu:");
+            String lastName = io.scanString("\tPlease Enter Last Name of Address to find");
+            ArrayList<Address> addressFound = addressBook.findAddress(lastName);
+            int count = 0;
+            for (Address eachAddress : addressFound) {
+                String stringcount = Integer.toString(count);
+                io.printString("enter to edit: " +stringcount);
+                io.printString(eachAddress.getFirstName() + " " + eachAddress.getLastName());
+                io.printString(eachAddress.getStreet());
+                io.printString(eachAddress.getCity() + ", " + eachAddress.getStat() + ", " + eachAddress.getZipcode());
+                count ++;
+            }
+             int edit = io.scanInt("Chose which address edit ");
+             Address editAddress = addressFound.get(edit);
+
+                io.printString("1:" + editAddress.getFirstName() + " " +"2:" + editAddress.getLastName());
+                io.printString("3:"+editAddress.getStreet());
+                io.printString("4" + editAddress.getCity() + ", " + "5" + editAddress.getStat() + ", " + "6"+editAddress.getZipcode());
+
+            int userChoice = io.scanInt("Which field do you wish to edit? (1-6): ");
+            
+            switch (userChoice) {
+            case 1:
+                String newFirstName = io.scanString("Enter new First Name: ");
+                addressBook.editAddressFirstName(editAddress, newFirstName);
+                break;
+            case 2:
+                String newLastName = io.scanString("Enter new Last Name: ");
+                addressBook.editAddressLastName(editAddress, newLastName);
+                break;
+            case 3:
+                String newStreet= io.scanString("Enter new Street: ");
+                addressBook.editAddressStreet(editAddress, newStreet);
+                break;
+            case 4:
+                String newCity = io.scanString("Enter new City: ");
+                addressBook.editAddressCity(editAddress, newCity);
+                break;
+            case 5:
+                String newState = io.scanString("Enter new State: ");
+                addressBook.editAddressState(editAddress, newState);
+                break;
+            case 6:
+                String newZip = io.scanString("Enter new Zip: ");
+                addressBook.editAddressZip(editAddress, newZip);
+                break;
+            default:
+                throw new AssertionError();
+        }
     }
 }
