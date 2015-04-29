@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.swcguild.addresses;
+package com.swcguild.addresses.controller;
 
+import com.swcguild.addresses.dao.AddressBook;
+import com.swcguild.addresses.dto.Address;
 import com.swcguild.consoleio.ConsoleIO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -17,10 +19,8 @@ import java.util.logging.Logger;
  * @author apprentice
  */
 public class AddressBookController {
-
     private ConsoleIO io = new ConsoleIO();
     private AddressBook addressBook = new AddressBook();
-
     public void run() {
         try {
             addressBook.read();
@@ -61,10 +61,8 @@ public class AddressBookController {
             Logger.getLogger(AddressBookController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(AddressBookController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
+        }  
     }
-
     private void printMenu() {
         io.printString("Initial Menu: ");
         io.printString("\tPlease select the operation you wish to perform: ");
@@ -76,7 +74,6 @@ public class AddressBookController {
         io.printString("\t\t6. Edit address");
         io.printString("\t\t7 exit");
     }
-
     private void addAddress() {
         boolean addressExists = false;
         String addMoreAddress = "";
@@ -87,7 +84,7 @@ public class AddressBookController {
             String streetAddress = io.scanString("please enter street address");
             String city = io.scanString("please enter city");
             String state = io.scanString("please enter state");
-            int zipcode = io.scanInt("please enter zip");
+            String zipcode = io.scanString("please enter zip");
 
             Address newAddress = new Address(firstName, lastName, streetAddress, city, state, zipcode);
             ArrayList<Address> checkAddresses = new ArrayList<>();
@@ -99,7 +96,6 @@ public class AddressBookController {
                     break;
                 }
             }
-
             if (!addressExists) {
                 addressBook.addAddress(newAddress);
                 io.printString("Address Added.");
@@ -123,7 +119,7 @@ public class AddressBookController {
                 io.printString("enter to delete: " + stringcount);
                 io.printString(eachAddress.getFirstName() + " " + eachAddress.getLastName());
                 io.printString(eachAddress.getStreet());
-                io.printString(eachAddress.getCity() + ", " + eachAddress.getStat() + ", " + eachAddress.getZipcode());
+                io.printString(eachAddress.getCity() + ", " + eachAddress.getState() + ", " + eachAddress.getZipcode());
                 count++;
             }
 
@@ -145,7 +141,7 @@ public class AddressBookController {
         for (Address eachAddress : addressFound) {
             io.printString(eachAddress.getFirstName() + " " + eachAddress.getLastName());
             io.printString(eachAddress.getStreet());
-            io.printString(eachAddress.getCity() + ", " + eachAddress.getStat() + ", " + eachAddress.getZipcode());
+            io.printString(eachAddress.getCity() + ", " + eachAddress.getState() + ", " + eachAddress.getZipcode());
         }
     }
 
@@ -156,13 +152,13 @@ public class AddressBookController {
 
     private void showAddresses() {
         for (Address address : addressBook.getAddresses()) {
+            io.printString("");
             io.printString(address.getFirstName() + " " + address.getLastName());
             io.printString(address.getStreet());
-            io.printString(address.getCity() + ", " + address.getStat() + ", " + address.getZipcode()+"\r");
+            io.printString(address.getCity() + ", " + address.getState() + ", " + address.getZipcode()+"\r");
             
         }
     }
-
     private void editAddress() {
         io.printString("find Address Menu:");
         String lastName = io.scanString("\tPlease Enter Last Name of Address to find");
@@ -173,7 +169,7 @@ public class AddressBookController {
             io.printString("enter to edit: " + stringcount);
             io.printString(eachAddress.getFirstName() + " " + eachAddress.getLastName());
             io.printString(eachAddress.getStreet());
-            io.printString(eachAddress.getCity() + ", " + eachAddress.getStat() + ", " + eachAddress.getZipcode());
+            io.printString(eachAddress.getCity() + ", " + eachAddress.getState() + ", " + eachAddress.getZipcode());
             count++;
         }
         int edit = io.scanInt("Chose which address edit ");
@@ -181,34 +177,35 @@ public class AddressBookController {
 
         io.printString("1:" + editAddress.getFirstName() + " " + "2:" + editAddress.getLastName());
         io.printString("3:" + editAddress.getStreet());
-        io.printString("4" + editAddress.getCity() + ", " + "5" + editAddress.getStat() + ", " + "6" + editAddress.getZipcode());
+        io.printString("4" + editAddress.getCity() + ", " + "5" + editAddress.getState() + ", " + "6" + editAddress.getZipcode());
 
         int userChoice = io.scanInt("Which field do you wish to edit? (1-6): ");
 
         switch (userChoice) {
             case 1:
                 String newFirstName = io.scanString("Enter new First Name: ");
-                addressBook.editAddressFirstName(editAddress, newFirstName);
+                editAddress.setFirstName(newFirstName);
                 break;
             case 2:
                 String newLastName = io.scanString("Enter new Last Name: ");
-                addressBook.editAddressLastName(editAddress, newLastName);
+                editAddress.setLastName(newLastName);
                 break;
             case 3:
                 String newStreet = io.scanString("Enter new Street: ");
-                addressBook.editAddressStreet(editAddress, newStreet);
+                editAddress.setStreet(newStreet);
+                
                 break;
             case 4:
                 String newCity = io.scanString("Enter new City: ");
-                addressBook.editAddressCity(editAddress, newCity);
+                editAddress.setCity(newCity);
                 break;
             case 5:
                 String newState = io.scanString("Enter new State: ");
-                addressBook.editAddressState(editAddress, newState);
+                editAddress.setState(newState);
                 break;
             case 6:
                 String newZip = io.scanString("Enter new Zip: ");
-                addressBook.editAddressZip(editAddress, newZip);
+                editAddress.setZipcode(newZip);
                 break;
             default:
                 throw new AssertionError();

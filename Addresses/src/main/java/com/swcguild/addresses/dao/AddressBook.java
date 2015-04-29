@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.swcguild.addresses;
+package com.swcguild.addresses.dao;
 
+import com.swcguild.addresses.dto.Address;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,8 +13,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
-
 /**
  *
  * @author apprentice
@@ -32,31 +33,7 @@ public class AddressBook {
             this.addresses.remove(address);
         
     }
-    
-    public void editAddressFirstName(Address address, String firstName) {
-        address.setFirstName(firstName);
-    }
-    
-    public void editAddressLastName(Address address, String lastName) {
-        address.setLastName(lastName);
-    }
-    
-    public void editAddressStreet(Address address, String street) {
-        address.setStreet(street);
-    }
-    
-    public void editAddressCity(Address address, String city) {
-        address.setCity(city);
-    }
-    
-    public void editAddressState(Address address, String state) {
-        address.setStat(state);
-    }
-    
-    public void editAddressZip(Address address, String zip) {
-        address.setZipcode(Integer.parseInt(zip));
-    }
-
+ 
     public ArrayList<Address> findAddress(String lastName) {
         ArrayList<Address> find = new ArrayList<>();
         for (Address address : addresses) {
@@ -75,7 +52,7 @@ public class AddressBook {
 
         PrintWriter out = new PrintWriter(new FileWriter("Addresses.txt"));
         for (Address address : addresses) {
-            out.println(address.getFirstName() + DELIMITER + address.getLastName() + DELIMITER + address.getStreet() + DELIMITER + address.getCity() + DELIMITER + address.getStat() + DELIMITER + address.getZipcode());
+            out.println(address.getFirstName() + DELIMITER + address.getLastName() + DELIMITER + address.getStreet() + DELIMITER + address.getCity() + DELIMITER + address.getState() + DELIMITER + address.getZipcode());
             out.flush();
         }
         out.close();
@@ -87,7 +64,7 @@ public class AddressBook {
         while(sc.hasNext()){
             String line = sc.nextLine();
             array = line.split(DELIMITER);
-            addresses.add(new Address(array[0], array[1], array[2], array[3], array[4], Integer.parseInt(array[5])));
+            addresses.add(new Address(array[0], array[1], array[2], array[3], array[4], array[5]));
     }
         sc.close();
     }
@@ -95,5 +72,33 @@ public class AddressBook {
     public ArrayList<Address> getAddresses() {
         return addresses;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.addresses);
+        hash = 67 * hash + Objects.hashCode(this.DELIMITER);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AddressBook other = (AddressBook) obj;
+        if (!Objects.equals(this.addresses, other.addresses)) {
+            return false;
+        }
+        if (!Objects.equals(this.DELIMITER, other.DELIMITER)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

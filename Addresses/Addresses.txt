@@ -1,2 +1,1 @@
-first::last::street::city::state::1234
-anotherfirstname::last::astreet::anothecity::md::8974
+First::last::street::city::state::zip

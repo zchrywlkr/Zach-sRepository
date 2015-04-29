@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.swcguild.addresses;
+package com.swcguild.addresses.dto;
 
 import java.util.Objects;
 
@@ -16,23 +16,27 @@ public class Address {
     private String lastName ;
     private String street ;
     private String city ; 
-    private String stat ;
-    private int zipcode;
+    private String state ;
+    private String zipcode;
 
-    public Address(String firstName, String lastName, String street, String city, String stat, int zipcode) {
+    public Address(String firstName, String lastName, String street, String city, String state, String zipcode) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
         this.city = city;
-        this.stat = stat;
+        this.state = state;
         this.zipcode = zipcode;
     }
 
-    public int getZipcode() {
+    public Address() {
+    }
+    
+
+    public String getZipcode() {
         return zipcode;
     }
 
-    public void setZipcode(int zipcode) {
+    public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
 
@@ -68,12 +72,12 @@ public class Address {
         this.city = city;
     }
 
-    public String getStat() {
-        return stat;
+    public String getState() {
+        return state;
     }
 
-    public void setStat(String stat) {
-        this.stat = stat;
+    public void setState(String state) {
+        this.state = state;
     }
 
     @Override
@@ -83,8 +87,8 @@ public class Address {
         hash = 41 * hash + Objects.hashCode(this.lastName);
         hash = 41 * hash + Objects.hashCode(this.street);
         hash = 41 * hash + Objects.hashCode(this.city);
-        hash = 41 * hash + Objects.hashCode(this.stat);
-        hash = 41 * hash + this.zipcode;
+        hash = 41 * hash + Objects.hashCode(this.state);
+        hash = 41 * hash +  Objects.hashCode(this.zipcode);
         return hash;
     }
 
@@ -109,7 +113,7 @@ public class Address {
         if (!Objects.equals(this.city, other.city)) {
             return false;
         }
-        if (!Objects.equals(this.stat, other.stat)) {
+        if (!Objects.equals(this.state, other.state)) {
             return false;
         }
         if (this.zipcode != other.zipcode) {
@@ -117,7 +121,5 @@ public class Address {
         }
         return true;
     }
-    
-   
-    
+
 }

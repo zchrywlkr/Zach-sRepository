@@ -5,6 +5,8 @@
  */
 package com.swcguild.addresses;
 
+import com.swcguild.addresses.controller.AddressBookController;
+
 /**
  *
  * @author apprentice
