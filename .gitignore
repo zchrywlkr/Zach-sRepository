@@ -10,3 +10,81 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/PBD/Variables/VariablesAndNames/target/
+/PBD/Variables/MoreVariablesAndPrinting/target/
+/PBD/Variables/StillUsingVariables/target/
+/PBD/Variables/YourSchedule/target/
+/PBD/KeyboardInput/AskingQuestions/target/
+/PBD/KeyboardInput/TheForgetfulMachine/target/
+/PBD/KeyboardInput/NameAgeSalary/target/
+/PBD/KeyboardInput/MoreUserInputofData/target/
+/PBD/KeyboardInput/AgeInFiveYears/target/
+/PBD/KeyboardInput/ADumbCalculator/target/
+/PBD/KeyboardInput/BMICalc/target/
+/PBD/IfStatements/WhatIf/target/
+/PBD/IfStatements/HowOldAreYou/target/
+/Examples/SwitchPratice/target/
+/WarmUps/mavenproject1/target/
+/PBD/IfStatements/ElseAndIf/target/
+/PBD/IfStatements/WeekdayName/target/
+/Examples/LoopExample/target/
+/PBD/IfStatements/SpaceBoxing/target/
+/PBD/IfStatements/LittleQuiz/target/
+/Labs/InterestCalc/target/
+/PBD/IfStatements/ModulusAnimation/target/
+/PBD/RandomNumbers/Randomness/target/
+/WarmUps/PrimeFinder/target/
+/PBD/RandomNumbers/Magic8Ball/target/
+/PBD/IfStatements/mavenproject1/target/
+/PBD/IfStatements/TwoMoreQuestions/target/
+/Labs/Factorizor/target/
+/PBD/Project BlackJack/BlackJack/target/
+/PBD/IfStatements/BMICategories/target/
+/Examples/MethodExample/target/
+/PBD/IfStatements/GenderGame/target/
+/PBD/IfStatements/CompareTo/target/
+/PBD/While Loop/EnterYourPin/target/
+/PBD/While Loop/KeepGuessing/target/
+/PBD/While Loop/DiceDoubles/target/
+/PBD/While Loop/PINLockout/target/
+/PBD/While Loop/NumberGuessingCounter/target/
+/PBD/While Loop/HiLoLimited/target/
+/PBD/While Loop/AddingValuesLoop/target/
+/Labs/TicTacToe/target/
+/PBD/HangMan/target/
+/PBD/Functions/PictureMenu/target/
+/AdditionalLabs/CreditCardCheck/target/
+/Examples/UserInputNoArrays/target/
+/Examples/PrintWriter/target/
+/PBD/Fileio/LetterRevisited/target/
+/PBD/Fileio/SimpleFileInput/target/
+/Labs/RockPaperScissors4/target/
+/NewFolder/BattleShip/target/
+/JavaBasicsSkillCheck/target/
+/Projects/WheelOfFortune/target/
+/Examples/ClassExample/target/
+/Examples/GuessMyAge/target/
+/Projects/WheelOfFortuneWithClasses/target/
+/Examples/StaticExample/target/
+/Examples/JunitExample/target/
+/PBD/TestDriils/TestDrills/target/
+/Labs/SimpleCalculator/target/
+/PBD/TestDriils/Conditionals/MischeviousChildren/target/
+/Examples/ArrayListHashMapExample/target/
+/PBD/TestDriils/Logic/target/
+/Examples/ClassRosterLiveCode/target/
+/PBD/TestDriils/Loops/target/
+/PBD/TestDriils/Strings/target/
+/Examples/ErrorFindingExample/target/
+/Labs/ConsoleIO/target/
+/Addresses/target/
+/WarmUps/Diceses/target/
+/WarmUps/IterationWarmup/target/
+/Examples/InheritanceExample/target/
+/Projects/DVDLibrary/target/
+/WarmUps/IterationII/target/
+/Projects/VendingMachine/target/
+/Examples/InterfaceExample/target/
+/Labs/Games/target/
+/Labs/BaseBallLeague/target/
+/AdditionalLabs/Cipher/target/

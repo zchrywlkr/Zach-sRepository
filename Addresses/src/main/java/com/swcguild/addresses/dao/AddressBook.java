@@ -5,6 +5,7 @@
  */
 package com.swcguild.addresses.dao;
 
+import com.swcguild.addresses.AddressException;
 import com.swcguild.addresses.dto.Address;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -13,30 +14,33 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author apprentice
  */
 public class AddressBook {
-
-    ArrayList<Address> addresses = new ArrayList<>();
+    int id =0;
+    HashMap<Integer,Address> addresses = new HashMap<>();
     public final String DELIMITER = "::";
 
-    public boolean addAddress(Address address) {
-        return addresses.add(address);
+    public Address addAddress(Address address) {
+        id++;
+        address.setId(String.valueOf(id));
+        return addresses.put(id,address);
     }
 
     public void removeAddress(Address address) {
-        
-            this.addresses.remove(address);
-        
+            this.addresses.remove(Integer.parseInt(address.getId()));
     }
- 
     public ArrayList<Address> findAddress(String lastName) {
         ArrayList<Address> find = new ArrayList<>();
-        for (Address address : addresses) {
+        
+        for (Address address : addresses.values()) {
             if (address.getLastName().equals(lastName)) {
                 find.add(address);
             }
@@ -48,28 +52,36 @@ public class AddressBook {
         return addresses.size();
     }
 
-    public void save() throws IOException {
+    public void save() throws IOException  {
 
         PrintWriter out = new PrintWriter(new FileWriter("Addresses.txt"));
-        for (Address address : addresses) {
-            out.println(address.getFirstName() + DELIMITER + address.getLastName() + DELIMITER + address.getStreet() + DELIMITER + address.getCity() + DELIMITER + address.getState() + DELIMITER + address.getZipcode());
+        for (Address address : addresses.values()) {
+            out.println(address.getFirstName() + DELIMITER + address.getLastName() + DELIMITER + address.getStreet() + DELIMITER + address.getCity() + DELIMITER + address.getState() + DELIMITER + address.getZipcode()+DELIMITER+address.getId());
             out.flush();
         }
         out.close();
     }
 
-    public void read() throws FileNotFoundException {
-        Scanner sc = new Scanner(new BufferedReader(new FileReader("Addresses.txt")));
-        String[] array;
+    public void read()throws AddressException  {
+        Scanner sc;
+        try {
+            sc = new Scanner(new BufferedReader(new FileReader("Addresses.txt")));
+        } catch (FileNotFoundException ex) {
+            throw new AddressException();
+        }
+        String[] array = new String[7];
+        
         while(sc.hasNext()){
             String line = sc.nextLine();
             array = line.split(DELIMITER);
-            addresses.add(new Address(array[0], array[1], array[2], array[3], array[4], array[5]));
+            addresses.put(Integer.parseInt(array[6]), new Address(array[0], array[1], array[2], array[3], array[4], array[5],array[6]));
+            
     }
+        id = Integer.parseInt(array[6]);
         sc.close();
     }
 
-    public ArrayList<Address> getAddresses() {
+    public HashMap<Integer,Address> getAddresses() {
         return addresses;
     }
 
@@ -99,6 +111,11 @@ public class AddressBook {
         return true;
     }
     
+    public void editAddress(Address address){
+        removeAddress(address);
+        addAddress(address);
+        
+    }
     
 
 }

@@ -13,7 +13,7 @@ import com.swcguild.addresses.controller.AddressBookController;
  */
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AddressException {
         AddressBookController app = new AddressBookController();
         app.run();
     }

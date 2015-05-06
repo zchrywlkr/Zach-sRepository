@@ -5,6 +5,7 @@
  */
 package com.swcguild.addresses.controller;
 
+import com.swcguild.addresses.AddressException;
 import com.swcguild.addresses.dao.AddressBook;
 import com.swcguild.addresses.dto.Address;
 import com.swcguild.consoleio.ConsoleIO;
@@ -21,7 +22,7 @@ import java.util.logging.Logger;
 public class AddressBookController {
     private ConsoleIO io = new ConsoleIO();
     private AddressBook addressBook = new AddressBook();
-    public void run() {
+    public void run() throws AddressException {
         try {
             addressBook.read();
 
@@ -151,7 +152,7 @@ public class AddressBookController {
     }
 
     private void showAddresses() {
-        for (Address address : addressBook.getAddresses()) {
+        for (Address address : addressBook.getAddresses().values()) {
             io.printString("");
             io.printString(address.getFirstName() + " " + address.getLastName());
             io.printString(address.getStreet());
@@ -210,5 +211,7 @@ public class AddressBookController {
             default:
                 throw new AssertionError();
         }
+        addressBook.editAddress(editAddress);
     }
+    
 }

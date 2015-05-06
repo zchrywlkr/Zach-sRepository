@@ -18,15 +18,27 @@ public class Address {
     private String city ; 
     private String state ;
     private String zipcode;
+    private String id;
 
-    public Address(String firstName, String lastName, String street, String city, String state, String zipcode) {
+    public Address(String firstName, String lastName, String street, String city, String state, String zipcode,String id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.street = street;
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
+        this.id = id;
     }
+      public Address(String firstName, String lastName, String street, String city, String state, String zipcode) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
+        
+    }
+
 
     public Address() {
     }
@@ -82,13 +94,14 @@ public class Address {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + Objects.hashCode(this.firstName);
-        hash = 41 * hash + Objects.hashCode(this.lastName);
-        hash = 41 * hash + Objects.hashCode(this.street);
-        hash = 41 * hash + Objects.hashCode(this.city);
-        hash = 41 * hash + Objects.hashCode(this.state);
-        hash = 41 * hash +  Objects.hashCode(this.zipcode);
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.firstName);
+        hash = 83 * hash + Objects.hashCode(this.lastName);
+        hash = 83 * hash + Objects.hashCode(this.street);
+        hash = 83 * hash + Objects.hashCode(this.city);
+        hash = 83 * hash + Objects.hashCode(this.state);
+        hash = 83 * hash + Objects.hashCode(this.zipcode);
+        hash = 83 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -116,10 +129,23 @@ public class Address {
         if (!Objects.equals(this.state, other.state)) {
             return false;
         }
-        if (this.zipcode != other.zipcode) {
+        if (!Objects.equals(this.zipcode, other.zipcode)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
+    }
+
+ 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
 }

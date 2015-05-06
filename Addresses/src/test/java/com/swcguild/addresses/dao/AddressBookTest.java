@@ -5,6 +5,7 @@
  */
 package com.swcguild.addresses.dao;
 
+import com.swcguild.addresses.AddressException;
 import com.swcguild.addresses.dto.Address;
 import java.io.IOException;
 import org.junit.After;
@@ -48,14 +49,13 @@ public class AddressBookTest {
     // public void hello() {}
     @Test
     public void checkEmpty(){
-        assertEquals(0,addressBook.countAddresses());
-        
+        assertEquals(0,addressBook.countAddresses());   
     }
-    
     @Test
     public void checkAdd(){
         Address address = new Address();
-        assertTrue(addressBook.addAddress(address));
+        addressBook.addAddress(address);
+        assertEquals(1,addressBook.countAddresses());
         
     }
     
@@ -73,16 +73,17 @@ public class AddressBookTest {
         assertEquals(0, addressBook.countAddresses());
     }
       @Test
-    public void testSave() throws IOException{
+    public void testSave() throws IOException, AddressException{
         
-         Address address = new Address("First","last","street", "city","state","zip");
+        Address address = new Address("First","last","street", "city","state","zip");
+        AddressBook addressBook2 = new AddressBook();
         addressBook.addAddress(address);
         
         addressBook.save();
-        addressBook.removeAddress(address);
-        addressBook.read();
-        assertEquals(1, addressBook.countAddresses());        
+        
+        addressBook2.read();
+        assertTrue(addressBook.equals(addressBook2));     
+//      assertEquals(1,addressBook2.countAddresses());
+//      assertTrue(addressBook.getAddresses().equals(addressBook2.getAddresses()));   
     }
-    
-    
 }

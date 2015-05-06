@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.swcguild.blackjack;
-
 import java.util.Random;
 import java.util.Scanner;
 
-/**
- *
- * @author apprentice
- */
 public class BlackJack {
-
     public static void main(String[] args) {
         int player = 0;
         int temp = 0;
@@ -31,28 +20,26 @@ public class BlackJack {
         System.out.println("how much money do you have");
         money = sc.nextDouble();
         sc.nextLine();
-
         do {
             System.out.println("How much money do you want to bet? ");
             bet = sc.nextDouble();
             sc.nextLine();
-
             card1 = 2 + r.nextInt(10);
             card2 = 2 + r.nextInt(10);
-            if(card1 == 11){
+            if (card1 == 11) {
                 playerAces++;
             }
-            if(card2 == 11){
+            if (card2 == 11) {
                 playerAces++;
             }
             player = card1 + card2;
             System.out.println("you have " + card1 + " and " + card2 + ", for a total of " + player);
             card1 = 2 + r.nextInt(10);
             card2 = 2 + r.nextInt(10); //keeping the value of computers hiden card
-            if(card1 == 11){
+            if (card1 == 11) {
                 computerAces++;
             }
-            if(card2 == 11){
+            if (card2 == 11) {
                 computerAces++;
             }
             System.out.println("the computer has " + card1);
@@ -60,15 +47,13 @@ public class BlackJack {
 
             System.out.println("\"hit\" \"Stay\"");
             playerChoice = sc.nextLine();
-            
+
             while (playerChoice.equals("hit") && (player != 0)) {
                 temp = player;
-                player = deal("player", player,playerAces);
-                if(player <= temp){
+                player = deal("player", player, playerAces);
+                if (player <= temp) {
                     playerAces--;
                 }
-                
-                
 //                card1 = 2 + r.nextInt(11);
 //                player += card1;
 //                System.out.println("you were dealt a " + card1 + " total is " + player);
@@ -85,8 +70,8 @@ public class BlackJack {
             System.out.println("Dealer's hidden card is a " + card2 + ", and the total is " + computer);
             while ((computer < 17) && (computer != 0) && (player != 0)) {
                 temp = computer;
-                computer = deal("dealer", computer,computerAces);
-                if(computer <= temp){
+                computer = deal("dealer", computer, computerAces);
+                if (computer <= temp) {
                     computerAces--;
                 }
 //                card1 = 2 + r.nextInt(11);
@@ -109,33 +94,27 @@ public class BlackJack {
             }
             System.out.println("You have " + money + " left.  Play again? \"y\" \"n\"");
             playAgain = sc.nextLine();
-        } while ((money > 0 && playAgain.equals("y")) );
-
+        } while ((money > 0 && playAgain.equals("y")));
     }
-
     public static int deal(String player, int hand, int aces) {
         Random r = new Random();
-        
         int card = 2 + r.nextInt(10);
-        if(card == 11){
-            if((hand+card)>21){
-                card =1;
+        if (card == 11) { 
+            if ((hand + card) > 21) {
+                card = 1;
             }
         }
         hand += card;
-        System.out.print(player + " is dealt a " + card );
+        System.out.print(player + " is dealt a " + card);
         if (hand > 21) {
-            if(aces >0){
-                hand -=10;
-            }else{
+            if (aces > 0) {
+                hand -= 10;
+            } else {
                 System.out.println(player + " bust");
                 hand = 0; // setting player to 0 to indicate automatic loss.
             }
-            
         }
         System.out.println(" total is " + hand);
         return hand;
-        
     }
-
 }

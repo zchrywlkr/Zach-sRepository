@@ -17,7 +17,7 @@ public class TicTacToe {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String board[] = new String[9];
-        board[0] = "1";
+        board[0] = "1"; //TODO use loop
         board[1] = "2";
         board[2] = "3";
         board[3] = "4";
@@ -40,7 +40,7 @@ public class TicTacToe {
                 drawBoard(board);
                         
                 moves++;
-                winner = winner(board, "o");
+                winner = checkWinner(board, "o");
             }
             
             if (winner != 0 || moves == 9) { //checks to see if game should end
@@ -52,7 +52,7 @@ public class TicTacToe {
             moves++;
             board = move(board, move, "x");
             drawBoard(board);
-            winner = winner(board, "x");
+            winner = checkWinner(board, "x");
             if (winner != 0 || moves == 9) { //checks to see if game should end
                 break;
             }
@@ -63,7 +63,7 @@ public class TicTacToe {
                 moves++;
 
                 drawBoard(board);
-                winner = winner(board, "o");
+                winner = checkWinner(board, "o");
             }else{
                 
             }
@@ -98,7 +98,7 @@ public class TicTacToe {
         return board;
     }
 
-    public static int winner(String[] board, String player) {
+    public static int checkWinner(String[] board, String player) {//TODO chagne name checkwiner
 
         for (int i = 0; i < 9; i += 3) {
             if (board[i].equals(board[i + 1]) && board[i].equals(board[i + 2])) {//checks for horizontal  wins

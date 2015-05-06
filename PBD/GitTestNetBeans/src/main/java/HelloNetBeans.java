@@ -9,9 +9,9 @@
  * @author apprentice
  */
 public class HelloNetBeans {
-    
+   
     public static void main(String[]args){
-        System.out.println("hello guild");
+        System.out.println("Hi guild");
     }
     
 }

@@ -27,7 +27,6 @@ public class LeagueController {
     public void run() throws FileNotFoundException, IOException {
         boolean keepGoin = true;
         leagues = saveLoad.load(leagues);
-
         do {
             io.printString("Leagues");
             for (League league : leagues.values()) {
@@ -48,10 +47,8 @@ public class LeagueController {
         } while (keepGoin);
         saveLoad.save(leagues);
     }
-
     private void leaguemenu(League league) {
         boolean keepGoin = true;
-
         do {
             io.printString("1) Create Team \r2) Choose Team\r3) exit ");
             input = io.scanString("");
@@ -71,17 +68,13 @@ public class LeagueController {
             }
         } while (keepGoin);
     }
-
     private void createTeam(League league) {
         input = io.scanString("enter new team name");
         league.addNewTeam(input);
     }
-
     private void chooseTeam(League league) {
-
         for (Team team : league.getTeams().values()) {
             io.printString(team.getId() + " " + team.getName());
-
         }
         input = io.scanString("select Team or x to exit");
 
@@ -91,10 +84,8 @@ public class LeagueController {
             default:
                 teamMenu(league.getTeams().get((input)), league);
                 break;
-
         }
     }
-
     private void teamMenu(Team team, League league) {
         boolean keepGoin = true;
         do {

@@ -1,12 +1,22 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.swcguild.rockpaperscissors4;
+
 import java.util.Random;
 import java.util.Scanner;
+
+/**
+ *
+ * @author apprentice
+ */
 public class Rps {
+
     public static void main(String[] args) {
         int userChoice;
         int computerChoice;
-        int result;
         int numWins = 0;
         int numLosses = 0;
         int numTies = 0;
@@ -14,37 +24,23 @@ public class Rps {
         Scanner sc = new Scanner(System.in);
         Random r = new Random();
         int rounds = 0;
+
         do {
-            numWins = 0;
-            numLosses = 0;
-            numTies = 0;
+
             do {
                 System.out.println("enter the number of rounds");
                 rounds = sc.nextInt();
-            }while ((rounds <= 0) || (rounds > 10));
+            } while ((rounds <= 0) || (rounds > 10));
+
             for (int i = 0; i < rounds; i++) {
+
                 sc.nextLine();
                 System.out.println("Please enter one of the following:");
                 System.out.println("1: Rock\t2:Paper\t3:Scissors");
                 userChoice = sc.nextInt();
                 computerChoice = 1 + r.nextInt(3);
                 System.out.println("I chose " + computerChoice);
-                
-                result = rules(userChoice,computerChoice);
-                
-                switch(result) {
-                    case 0: numTies++;
-                            System.out.println("Tie!");
-                            break;
-                    case 1: numWins++;
-                            System.out.println("You win...");
-                            break;
-                    case -1:numLosses++;
-                            System.out.println("I win!");
-                            break;
-                    default:;
-                }
-                /*if (userChoice == computerChoice) {
+                if (userChoice == computerChoice) {
                     System.out.println("Tie!");
                     numTies++;
                 } else if (userChoice == 1) {
@@ -71,7 +67,8 @@ public class Rps {
                         System.out.println("You win...");
                         numWins++;
                     }
-                }*/
+
+                }
             }
             System.out.println("You won " + numWins + " times.");
             System.out.println("You lost " + numLosses + " times.");
@@ -81,17 +78,6 @@ public class Rps {
             playAgain = sc.nextLine();
         } while (playAgain.equals("yes"));
         System.out.println("Thanks for playing");
-    }
-    
-    public static int rules(int player, int computer) {
-        // array containing rules.
-        // row: computer, column: player
-        // 1: player wins, 0: tie, -1:computer wins
-        int[][] rules = {{0,1,-1},
-                       {-1,0,1},
-                       {1,-1,0}};  
-    
-        return rules[computer-1][player-1];
     }
 
 }

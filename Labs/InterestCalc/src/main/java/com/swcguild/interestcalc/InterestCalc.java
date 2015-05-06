@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author apprentice
  */
 public class InterestCalc {
-    public static void main(String[] args) {
+    public static void calculate() {
         Scanner sc = new Scanner(System.in);
         double rate = 0;
         double money = 0;
@@ -29,6 +29,7 @@ public class InterestCalc {
             case "yearly": interval = 1; break;
             case "quarterly" :interval = 4; break;
             case "daily": interval = 365; break;
+            case "monthly": interval = 12; break;
             default: interval = 1;    
         }
             
@@ -61,7 +62,7 @@ public class InterestCalc {
           System.out.println("money " + money);  
             System.out.println("year number "+ (2015 + currentYear));
           currentYear++;
-        } while (currentYear <= years);
+        } while (currentYear < years);
         
     }
 }

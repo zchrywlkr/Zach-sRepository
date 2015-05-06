@@ -40,7 +40,6 @@ public class MoreUserInputData {
         System.out.println("\tName: "+ firstName + " " + lastName);
         System.out.println("\tGPA: "+ gpa );
         System.out.println("\tgrade: "+ grade );
-        
     }
     
 }
