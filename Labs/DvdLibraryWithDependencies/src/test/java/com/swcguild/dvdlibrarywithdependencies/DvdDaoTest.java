@@ -44,7 +44,7 @@ public class DvdDaoTest {
     public void setUp() {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
         
-        dao = ctx.getBean("dao",DvdDaoDummyImpl.class);
+        dao = ctx.getBean("dao",DvdDaoInMemoryImplZachWalker.class);
         
         dvd = ctx.getBean("dvd1" , Dvd.class);
         

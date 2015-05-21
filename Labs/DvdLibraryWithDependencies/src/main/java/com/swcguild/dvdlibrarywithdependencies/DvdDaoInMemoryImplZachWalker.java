@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author apprentice
  */
-public class DvdDaoDummyImpl implements DvdLibraryDao {
+public class DvdDaoInMemoryImplZachWalker implements DvdLibraryDao {
     Map<Integer,Dvd> list = new HashMap<>();
     int id =0;
     

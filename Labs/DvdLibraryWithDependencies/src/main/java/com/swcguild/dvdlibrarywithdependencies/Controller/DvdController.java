@@ -2,11 +2,7 @@ package com.swcguild.dvdlibrarywithdependencies.Controller;
 import com.swcguild.consoleio.ConsoleIO;
 import com.swcguild.dvdlibrary.dao.DvdLibraryDao;
 import com.swcguild.dvdlibrary.dto.Dvd;
-import com.swcguild.dvdlibrarywithdependencies.DvdDaoDummyImpl;
 import java.time.LocalDate;
-import javafx.application.Application;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class DvdController {
     DvdLibraryDao dao;
     ConsoleIO io;
