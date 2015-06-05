@@ -18,12 +18,12 @@ import java.util.stream.Collectors;
  */
 public class DvdDaoInMemoryImplZachWalker implements DvdLibraryDao {
     Map<Integer,Dvd> list = new HashMap<>();
-//    int id =0;
+    int id =0;
     
     @Override
     public void add(Dvd dvd) {
-//        id++;
-//        dvd.setId(id);
+        id++;
+        dvd.setId(id);
         list.put(dvd.getId(),dvd);   
     }
     @Override

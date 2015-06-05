@@ -15,21 +15,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Dvd {
     
     private int id;
-    @NotEmpty(message="you must supply a value for the title.")
-    @Length(max=50,message=" must be under 50 characters")
+//    @NotEmpty(message="you must supply a value for the title.")
+//    @Length(max=50,message=" must be under 50 characters")
     private String title;
 //    @NotNull(message="Please enter a date")
 //    @Past (message="Only the past is valid")
-    @DateTimeFormat(pattern = "dd/MM/yy")
-    private LocalDate releaseDate;
-    @NotEmpty(message="you must supply a value for the mpaa rating.")
-    @Length(max=50,message="must be under 50 characters")
+//    @DateTimeFormat(pattern = "dd/MM/yy")
+    private String releaseDate;
+//    @NotEmpty(message="you must supply a value for the mpaa rating.")
+//    @Length(max=50,message="must be under 50 characters")
     private String mpaaRating;
-   @NotEmpty(message="you must supply a value for the director.")
-    @Length(max=50,message=" must be under 50 characters")
+//   @NotEmpty(message="you must supply a value for the director.")
+//    @Length(max=50,message=" must be under 50 characters")
     private String director;
-    @NotEmpty(message="you must supply a value for the studio.")
-    @Length(max=50,message=" must be under 50 characters")
+//    @NotEmpty(message="you must supply a value for the studio.")
+//    @Length(max=50,message=" must be under 50 characters")
     private String studio;
     private String note;
 
@@ -50,11 +50,11 @@ public class Dvd {
         this.title = title;
     }
 
-    public LocalDate getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(LocalDate releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 

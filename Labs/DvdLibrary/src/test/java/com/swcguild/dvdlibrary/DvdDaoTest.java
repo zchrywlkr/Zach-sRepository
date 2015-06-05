@@ -55,7 +55,7 @@ public class DvdDaoTest {
         d1.setDirector("dir");
         d1.setMpaaRating("mpaa");
         d1.setNote("note");
-        d1.setReleaseDate(LocalDate.MIN);
+        d1.setReleaseDate("1");
         d1.setStudio("studio");
         d1.setTitle("title");
     }

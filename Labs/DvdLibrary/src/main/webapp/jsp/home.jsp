@@ -20,6 +20,7 @@
             <div class="navbar">
                  <ul class="nav nav-tabs">
                  <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/home">Home</a></li>
+                 <li role="presentation" class="active"><a href="${pageContext.request.contextPath}/ajax">ajax</a></li>
                 </ul>    
             </div>
             <h2>Dvd library</h2>

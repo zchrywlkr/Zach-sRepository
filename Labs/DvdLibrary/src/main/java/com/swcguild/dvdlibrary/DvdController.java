@@ -32,22 +32,21 @@ public class DvdController {
     public DvdController(DvdLibraryDao dao) {
         this.dao = dao;
     }
-    
-     @RequestMapping(value={"/","/home"}, method =RequestMethod.GET)
+     @RequestMapping(value={"/","/home"}, method = RequestMethod.GET)
     public String displayDvd(Model model){
         model.addAttribute("dvdList", dao.listAll());
         return "home";
     }
-     @RequestMapping(value="displayAddDvd", method =RequestMethod.GET)
+     @RequestMapping(value="displayAddDvd", method = RequestMethod.GET)
     public String displayAddDvd(Model model){
         Dvd dvd = new Dvd();
         dvd.setId(-1);
-        dvd.setReleaseDate(LocalDate.MIN);
+        dvd.setReleaseDate("1");
         model.addAttribute("dvd", dvd);
         return "addDvdForm";
     }
     
-    @RequestMapping(value="saveDvd",method =RequestMethod.POST)
+    @RequestMapping(value="saveDvd",method = RequestMethod.POST)
     public String addDvd(@Valid @ModelAttribute("dvd") Dvd dvd, BindingResult result){
         
         
@@ -71,7 +70,7 @@ public class DvdController {
             
             return "addDvdForm";
         }
-      @RequestMapping(value="deleteDvd", method =RequestMethod.GET)
+      @RequestMapping(value="deleteDvd", method = RequestMethod.GET)
         public String deleteContactNoAjax(HttpServletRequest req,Model model){
             
             int id = Integer.parseInt(req.getParameter("dvdId"));
@@ -95,6 +94,6 @@ public class DvdController {
             model.addAttribute("list", list);
             
             return "searchResult";
-        }
+        }   
         
 }
