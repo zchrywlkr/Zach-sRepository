@@ -1,0 +1,5 @@
+com/swcguild/serverinventory/dto/Server.class
+com/swcguild/serverinventory/controller/ServerInventoryController.class
+com/swcguild/serverinventory/App.class
+com/swcguild/serverinventory/dao/ServerDaoDummyImpl.class
+com/swcguild/serverinventory/dao/ServerDao.class
